@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ url }) => {
-  const city = url.searchParams.get('city') ?? 'Berlin';
-  const res = await fetch(`${url.origin}/api/weather?city=${encodeURIComponent(city)}`);
+export const load: PageServerLoad = async (event) => {
+  const city = event.url.searchParams.get('city') ?? 'Berlin';
+  const res = await event.fetch(`/api/weather?city=${encodeURIComponent(city)}`);
   const data = await res.json();
   return {
     weather: res.ok ? data : null,
