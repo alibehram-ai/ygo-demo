@@ -51,7 +51,7 @@
 		if (error) {
 			toasts.add({
 				type: 'error',
-				title: 'Weather Error',
+				title: '',
 				message: error,
 				duration: 5000
 			});
